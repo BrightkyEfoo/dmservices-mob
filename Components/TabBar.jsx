@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IoIcon from 'react-native-vector-icons/Ionicons';
 
@@ -21,20 +21,20 @@ const IconForIndex = i => {
 
 function MyTabBar({state, descriptors, navigation}) {
   return (
-    <View style={styles.navBar}>
-      {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+    <>
+      <View style={styles.navBar}>
+        {state.routes.map((route, index) => {
+          const {options} = descriptors[route.key];
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+              ? options.title
+              : route.name;
 
-        const isFocused = state.index === index;
+          const isFocused = state.index === index;
 
-        const onPress = () => {
-          if (route.name === 'home' || route.name === 'contact' || route.name === 'more') {
+          const onPress = () => {
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -45,45 +45,76 @@ function MyTabBar({state, descriptors, navigation}) {
               // The `merge: true` option makes sure that the params inside the tab screen are preserved
               navigation.navigate({name: route.name, merge: true});
             }
-          }
-        };
+          };
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
+          const onLongPress = () => {
+            navigation.emit({
+              type: 'tabLongPress',
+              target: route.key,
+            });
+          };
 
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={isFocused ? styles.navBarButtonFocused : styles.navBarButton}
-            // style={{ flex: 1 }}
-            key={index}>
-            {index === 4 ? (
-              <IoIcon
-                color="rgb(75,75,75)"
-                name={IconForIndex(index)}
-                size={20}
-              />
-            ) : (
-              <Icon
-                color="rgb(75,75,75)"
-                name={IconForIndex(index)}
-                size={20}
-              />
-            )}
-            <Text style={{color: 'rgb(75,75,75)', fontSize: 12}}>{label}</Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+          return (
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityState={isFocused ? {selected: true} : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={
+                isFocused ? styles.navBarButtonFocused : styles.navBarButton
+              }
+              // style={{ flex: 1 }}
+              key={index}>
+              {index === 4 ? (
+                <IoIcon
+                  color="rgb(75,75,75)"
+                  name={IconForIndex(index)}
+                  size={20}
+                />
+              ) : (
+                <Icon
+                  color="rgb(75,75,75)"
+                  name={IconForIndex(index)}
+                  size={20}
+                />
+              )}
+              <Text style={{color: 'rgb(75,75,75)', fontSize: 12}}>
+                {label}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      <TouchableOpacity
+        accessibilityRole="button"
+        style={{
+          height: 60,
+          width: 60,
+          borderRadius: 30,
+          position: 'absolute',
+          bottom: 60,
+          right: 5,
+          borderWidth: 0.3,
+          backgroundColor:'white',
+          borderColor: 'gray',
+          overflow: 'hidden',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onPress={e => {}}>
+        <Image
+          source={{
+            uri: 'https://e7.pngegg.com/pngimages/1006/83/png-clipart-whatsapp-computer-icons-android-whatsapp-cdr-logo.png',
+          }}
+          style={{
+            height: 50,
+            width: 50,
+          }}
+        />
+      </TouchableOpacity>
+    </>
   );
 }
 

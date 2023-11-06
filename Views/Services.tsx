@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Text,
@@ -82,7 +81,7 @@ const partners = [
   {image: 'https://dmservices.cm/wp-content/uploads/2023/02/logo-FTT.png'},
 ];
 
-const Home = () => {
+const Services = () => {
   const sliderRef1 = useRef<FlatList>(null);
   const [sliderIndex1, setsliderIndex1] = useState(0);
   const getItemLayout = (data, index) => {
@@ -110,7 +109,7 @@ const Home = () => {
       {/* premiere section */}
       <ImageBackground
         source={{
-          uri: 'https://dmservices.cm/wp-content/uploads/2023/02/DMServices.png',
+          uri: 'https://dmservices.cm/wp-content/uploads/2020/01/about-bg-img.jpg',
         }}
         resizeMode="cover"
         imageStyle={{
@@ -120,19 +119,34 @@ const Home = () => {
         <View style={styles.firstSectionSub}>
           <Text
             style={{
-              fontSize: 45,
-              fontWeight: '700',
-              textAlign: 'center',
+              fontSize: 50,
+              fontWeight: 'bold',
               color: 'white',
+              textAlign: 'center',
+              marginTop: 50,
             }}>
-            Create Amazing Business Websites
+            Services
           </Text>
-          <TouchableHighlight
-            activeOpacity={0.8}
-            style={styles.firstSectionButton}
-            underlayColor={'rgba(200, 200, 200,0.5)'}>
-            <Text style={{fontSize: 22}}>GET STARTED</Text>
-          </TouchableHighlight>
+          <Text
+            style={{
+              fontSize: Sizes.xl * 1.3,
+              fontWeight: 'bold',
+              color: 'white',
+              textAlign: 'center',
+            }}>
+            We provide a wide range of Services
+          </Text>
+          <Text
+            style={{
+              fontSize: Sizes.l,
+              fontWeight: 'bold',
+              color: 'white',
+              textAlign: 'center',
+              marginBottom: 70,
+            }}>
+            Digital Agency with a demonstrate history in cloud based solutions.
+            Lets build digital future of Africa together with an amazing team.
+          </Text>
         </View>
       </ImageBackground>
 
@@ -164,7 +178,7 @@ const Home = () => {
       </View>
 
       {/* troisieme section */}
-      <View style={thirdSectionStyles.container}>
+      {/* <View style={thirdSectionStyles.container}>
         <Text style={styles.titles}>Portfolio</Text>
         <View style={thirdSectionStyles.imageContainer}>
           {imagesLink.map((el, i) => {
@@ -177,7 +191,7 @@ const Home = () => {
             );
           })}
         </View>
-      </View>
+      </View> */}
 
       {/* quatrieme section */}
       <View
@@ -261,6 +275,38 @@ const Home = () => {
           </>
         </TouchableHighlight>
       </View> */}
+      <Text
+        style={{
+          color: 'black',
+          fontSize: Sizes.xl,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginHorizontal: 20,
+          marginVertical: 20,
+          marginTop: 35,
+        }}>{`"Amazing Designs and Quality Work!"`}</Text>
+      <Text
+        style={{
+          color: 'black',
+          paddingHorizontal: 12,
+          textAlign: 'center',
+          fontSize: Sizes.l,
+          marginBottom: 15,
+        }}>{`Call for tenders validated by the board of directors, satisfied with the result of the school's website.`}</Text>
+      <Text
+        style={{
+          color: 'black',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          fontSize: Sizes.l,
+        }}>{`TEFFO ETIENNE`}</Text>
+      <Text
+        style={{
+          color: 'black',
+          fontSize: Sizes.md,
+          textAlign: 'center',
+          textTransform: 'uppercase',
+        }}>{`Co-Founder, FTT Dschang`}</Text>
       <View
         style={{backgroundColor: 'rgba(0,0,200,0.05)', alignItems: 'center'}}>
         <View
@@ -340,17 +386,19 @@ const styles = StyleSheet.create({
   firstSection: {
     display: 'flex',
     flexDirection: 'column',
-    height: maxHeight / 2,
+    height: maxHeight / 2 + 60,
     objectFit: 'cover',
   },
   firstSectionSub: {
     display: 'flex',
     flexDirection: 'column',
-    height: maxHeight / 2,
+    height: maxHeight / 2 + 60,
     backgroundColor: 'rgba(0,0,0,0.7)',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 35,
+    paddingHorizontal: 15,
+    paddingVertical: 30,
   },
   firstSectionButton: {
     backgroundColor: 'rgb(104, 120, 214)',
@@ -393,7 +441,7 @@ const thirdSectionStyles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-export default Home;
+export default Services;
 
 const SecondSectionCards: FC<SecondSectionCardsProps> = ({
   ItIcon,
@@ -404,7 +452,7 @@ const SecondSectionCards: FC<SecondSectionCardsProps> = ({
     <View style={SecondSectionCardsStyle.container}>
       <View>
         <AntIcon name={ItIcon} size={40} color="rgb(104, 120, 214)" />
-        <Text style={SecondSectionCardsStyle.title}>title</Text>
+        <Text style={SecondSectionCardsStyle.title}>{title}</Text>
       </View>
       <View>
         {items.map((el, i) => {
@@ -434,9 +482,8 @@ const SecondSectionCardsStyle = StyleSheet.create({
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
+    width: maxWidth / 2 - 30,
     justifyContent: 'space-between',
-    // flexShrink : 0,
-    // flexGrow : 0
   },
   title: {
     fontSize: Sizes.l,

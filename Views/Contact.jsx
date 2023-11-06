@@ -34,8 +34,8 @@ export const ReachUsRowsData = [
   },
   {
     iconName: 'whatsapp',
-    text: '+971 55 659 3656',
-    url: `whatsapp://send?phone=${'+971556593656'}&text=${'hello dmservices'}`,
+    text: '+237 620 015 157',
+    url: `whatsapp://send?phone=${'+237620015157'}&text=${'hello dmservices'}`,
   },
   {
     iconName: 'linkedin',
@@ -253,14 +253,14 @@ const Contact = () => {
           }}
           onPress={() => {
             Linking.openURL(
-              `whatsapp://send?phone=${'+971556593656'}&text=${'hello dmservices'}`,
+              `whatsapp://send?phone=${'+237620015157'}&text=${'hello dmservices'}`,
             );
           }}
           underlayColor={'rgba(200, 200, 200,0.5)'}>
           <>
             <FaIcon name="whatsapp" size={25} />
             <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-              +971 55 659 3656
+              +237 620 015 157
             </Text>
           </>
         </TouchableHighlight>
